@@ -1,11 +1,9 @@
-FILES= hougheditor.h hougheditor.cpp
+FILES= hougheditor.h
 	#(listing all of your header files here, seperated by space.)
 myEditor: $(FILES)
-	g++ -o myEditor $^
-	touch example.txt
-	cat CS216PA2.txt > example.txt
+	g++ -o myEditor *.cpp $^
 	chmod u+x myEditor
 clean:
-	rm -f *.o myEditor example.txt editor_text.txt
+	rm -f *.o myEditor editor_text.txt
 test:
-	./PA3
+	./CS216PA3test

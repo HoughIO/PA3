@@ -42,4 +42,6 @@ class Editor{
 		void quitSave();
 };
 
+void helpmenu();
+
 #endif /* HOUGHEDITOR_H */

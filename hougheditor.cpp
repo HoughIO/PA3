@@ -3,6 +3,8 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <sys/ioctl.h>
+#include <cstdlib>
 #include "hougheditor.h"
 
 using namespace std;
@@ -162,7 +164,36 @@ void Editor::quitSave(){
 
 }
 
+void helpmenu(){
+	struct winsize w;
+	ioctl(0, TIOCGWINSZ, &w);
+	int lines = w.ws_row;
+	int columns = w.ws_col;
+	if (system("CLS"))//for windows
+	{
+		system("clear");//for linux
+	}
+	for (int n=1; n < lines; n++)
+	{
+		cout << endl;
+	}
+	cout;
+	cout;
+	cout << "-------------------------------------------------------------------------------------------" << endl;
+	cout << "	Welcome to my text editor." << endl;
+	cout << "	To insert text at the end of the file, type a line and press enter." << endl;
+	cout << "	To insert text at a certain line number, type \'I\'" << endl;
+	cout << "	followed by a space and the desired line number." << endl;
+	cout << "	To delete a line, type \'D\' followed by a space and the line number." << endl;
+	cout << "	To print all the lines, type \'L\' and press enter." <<endl;
+	cout << "	To exit, type \'E\' and press enter." << endl;
+	cout << "	To display this introduction, type \'H\' and press enter." << endl;
+	cout << "-----------------------------------------------------------" << endl;
+}
+
 int main(int argc, char *argv[]){
+
+
 	int counterset = 1;
 	int id;
 	string name;
@@ -190,17 +221,8 @@ int main(int argc, char *argv[]){
 		}
 	}
 
-	cout << "-----------------------------------------------------------" << endl;
-	cout << "	Welcome to my text editor." << endl;
-	cout << "	To insert text at the end of the file, type a line and press enter." << endl;
-	cout << "	To insert text at a certain line number, type \'I\'" << endl;
-	cout << "	followed by a space and the desired line number." << endl;
-	cout << "	To delete a line, type \'D\' followed by a space and the line number." << endl;
-	cout << "	To print all the lines, type \'L\' and press enter." <<endl;
-	cout << "	To exit, type \'E\' and press enter." << endl;
-	cout << "	To display this introduction, type \'H\' and press enter." << endl;
-	cout << "-----------------------------------------------------------" << endl;
-
+	helpmenu();
+	printf("\033[%d;%dH", 1,1);
 	while(userinput != 'e' || userinput != 'E'){
 		cin >> userinput;
 		if (userinput == 'I' || userinput =='i')
