@@ -7,6 +7,8 @@
 #include <cstdlib>
 #include "hougheditor.h"
 
+//Oh boy, I added a lot of dependencies.
+
 using namespace std;
 
 //----------------------------------------------
@@ -180,15 +182,10 @@ void helpmenu(){
 	cout;
 	cout;
 	cout << "-------------------------------------------------------------------------------------------" << endl;
-	cout << "	Welcome to my text editor." << endl;
-	cout << "	To insert text at the end of the file, type a line and press enter." << endl;
-	cout << "	To insert text at a certain line number, type \'I\'" << endl;
-	cout << "	followed by a space and the desired line number." << endl;
-	cout << "	To delete a line, type \'D\' followed by a space and the line number." << endl;
-	cout << "	To print all the lines, type \'L\' and press enter." <<endl;
-	cout << "	To exit, type \'E\' and press enter." << endl;
-	cout << "	To display this introduction, type \'H\' and press enter." << endl;
-	cout << "-----------------------------------------------------------" << endl;
+	cout << "I <linenum>: insert a line;	D <linenum>: delete a line;" << endl;
+	cout << "C <linenum>: copy a line to the clipboard;	P <linenum>: paste a line from the clipboard;" << endl;
+	cout << "L: list all lines;	H: print help;	E: to exit." << endl;
+	
 }
 
 int main(int argc, char *argv[]){
@@ -242,7 +239,6 @@ int main(int argc, char *argv[]){
 			filelist.displayList(filelist.tail);		
 		}
 		else if (userinput == 'H' || userinput == 'h'){
-			//display menu again
 			cout << "-----------------------------------------------------------" << endl;
 			cout << "	Welcome to my text editor." << endl;
 			cout << "	To insert text at the end of the file, type a line and press enter." << endl;

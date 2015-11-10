@@ -4,14 +4,8 @@
 #Section:    1
 
 
-#!/bin/bash
-# run the script with one command line argument, which represents the input file name
-#if [ $# > 1 ]
-#then echo "Warning: Needs no arguments"
-#echo "Usage: ./PA3 <inputfile_name>."
-#exit 1
-#fi
 reset
+#This clears the screen for the start of the program.
 echo "--------------- Welcome to Graham Hough's Text Editor ---------------"
 echo "  								   "
 echo "            Please type a few lines of text to start with		   "
@@ -26,18 +20,31 @@ echo "	To print all the lines, type \'L\' and press enter. 		   "
 echo "	To exit, type \'E\' and press enter.                               "
 echo "	To display this introduction, type \'H\' and press enter.          "
 echo "---------------------------------------------------------------------"
+#Instructions printed out
 TEXT=editor_text.txt
+#setting the name of the text file we'll be editing.
 `touch $TEXT`
+#creating the text file using the varible.
 while true; do
+	#the start of a while loop
 	read line
+	#read user inputs, each input is a line of the file.
 	`echo $line >> $TEXT`	
+	#This prints out the line, and appends it to the text file.
 	if echo "$line" | grep -q '^$'
+		#Here I scan the user's input for ctrl+d
 		then
 		break 1 
+		#If they hit ctrl+d, the loop is broken.
 	fi
 done
 cat $TEXT | head -n -1 > tmp.txt
+#This line removes the last line of the text file, which is always a blank line.
 mv tmp.txt $TEXT
+#moving the temp text file back into the original.
 reset
+#Clearing the screen.
 export PATH=$PATH:~/CS216/PA3/myEditor
+#Exporting the path so the program can be run.
 ./myEditor $TEXT
+#running the actual text editor with the file the user just made.
