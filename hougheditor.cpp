@@ -236,7 +236,9 @@ int main(int argc, char *argv[]){
 		}
 		else if (userinput == 'L' || userinput == 'l'){
 			//print all lines
-			filelist.displayList(filelist.tail);		
+			helpmenu();
+			printf("\033[%d;%dH", 1,1);
+			filelist.displayList(filelist.head);		
 		}
 		else if (userinput == 'H' || userinput == 'h'){
 			cout << "-----------------------------------------------------------" << endl;

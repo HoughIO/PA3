@@ -48,3 +48,4 @@ export PATH=$PATH:~/CS216/PA3/myEditor
 #Exporting the path so the program can be run.
 ./myEditor $TEXT
 #running the actual text editor with the file the user just made.
+reset
