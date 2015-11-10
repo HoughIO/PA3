@@ -1,0 +1,43 @@
+#First Name: Graham
+#Last Name:  Hough
+#Email:	     Graham@hough.io
+#Section:    1
+
+
+#!/bin/bash
+# run the script with one command line argument, which represents the input file name
+#if [ $# > 1 ]
+#then echo "Warning: Needs no arguments"
+#echo "Usage: ./PA3 <inputfile_name>."
+#exit 1
+#fi
+reset
+echo "--------------- Welcome to Graham Hough's Text Editor ---------------"
+echo "  								   "
+echo "            Please type a few lines of text to start with		   "
+echo "  								   "
+echo " 	          Click ctrl-d to stop tpying and save to a file	   " 
+echo "  								   "
+echo "	To insert text at the end of the file, type a line and press enter."
+echo "	To insert text at a certain line number, type \'I\'  		   "
+echo "	followed by a space and the desired line number.                   "
+echo "	To delete a line, type \'D\' followed by a space and the line number."
+echo "	To print all the lines, type \'L\' and press enter. 		   "
+echo "	To exit, type \'E\' and press enter.                               "
+echo "	To display this introduction, type \'H\' and press enter.          "
+echo "---------------------------------------------------------------------"
+TEXT=editor_text.txt
+`touch $TEXT`
+while true; do
+	read line
+	`echo $line >> $TEXT`	
+	if echo "$line" | grep -q '^$'
+		then
+		break 1 
+	fi
+done
+cat $TEXT | head -n -1 > tmp.txt
+mv tmp.txt $TEXT
+reset
+export PATH=$PATH:~/CS216/PA3/myEditor
+./myEditor $TEXT

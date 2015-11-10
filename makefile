@@ -6,6 +6,6 @@ myEditor: $(FILES)
 	cat CS216PA2.txt > example.txt
 	chmod u+x myEditor
 clean:
-	rm -f *.o myEditor example.txt
+	rm -f *.o myEditor example.txt editor_text.txt
 test:
-	./myEditor example.txt
+	./PA3

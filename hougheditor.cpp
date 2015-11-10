@@ -217,7 +217,7 @@ int main(int argc, char *argv[]){
 		}
 		else if (userinput == 'L' || userinput == 'l'){
 			//print all lines
-			filelist.displayList(filelist.head);		
+			filelist.displayList(filelist.tail);		
 		}
 		else if (userinput == 'H' || userinput == 'h'){
 			//display menu again
